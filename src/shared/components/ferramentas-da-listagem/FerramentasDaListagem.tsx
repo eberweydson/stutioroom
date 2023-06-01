@@ -1,7 +1,7 @@
 import { PropsWithChildren } from 'react';
 import { Box, Button, Icon, Paper, TextField, useTheme } from '@mui/material';
 
-interface IBarraDeFerramentasProps {
+interface IFerramentasDaListagemProps {
   textoDaBusca?: string;
   mostrarImputBusca?: boolean;
   aoMudarTextoDeBusca?: (novoTexto: string) => void;
@@ -11,7 +11,7 @@ interface IBarraDeFerramentasProps {
 }
 
 /* eslint-disable react/prop-types */
-export const BarraDeFerramentas: React.FC<PropsWithChildren<IBarraDeFerramentasProps>> = ({ 
+export const FerramentasDaListagem: React.FC<PropsWithChildren<IFerramentasDaListagemProps>> = ({ 
   textoDaBusca = '', 
   mostrarImputBusca = false, 
   aoMudarTextoDeBusca, 
