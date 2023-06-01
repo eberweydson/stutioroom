@@ -50,7 +50,9 @@ export const FerramentasDaListagem: React.FC<PropsWithChildren<IFerramentasDaLis
             variant='contained'
             endIcon={<Icon>add</Icon>}
             onClick={aoClicarEmNovo}
-          >{textoBotaoNovo}</Button>
+          >
+            {textoBotaoNovo}
+          </Button>
         )}
       </Box>
     </Box>
