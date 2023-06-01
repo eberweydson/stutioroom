@@ -8,6 +8,8 @@ export const Dashboard: React.FC = () => {
       titulo='Dashboard' 
       barraDeFerramentas={
         <FerramentasDeDetalhe
+          mostrarBotaoSalvarEFechar
+          mostrarBotaoSalvarEFecharCarregando
         />
       }
     >
