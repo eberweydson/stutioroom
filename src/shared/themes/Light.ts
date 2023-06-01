@@ -2,10 +2,6 @@ import { createTheme } from '@mui/material';
 import { yellow, cyan } from '@mui/material/colors';
 
 export const LightTheme = createTheme({
-  typography: {
-    fontFamily: 'Roboto',
-    fontSize: 12
-  },
   palette: {
     primary: {
       main: yellow[700],

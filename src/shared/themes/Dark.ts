@@ -3,10 +3,12 @@ import { yellow, cyan } from '@mui/material/colors';
 
 export const DarkTheme = createTheme({
   typography: {
-    fontFamily: 'Roboto',
-    fontSize: 12
+    allVariants: {
+      color: '#ffffff'
+    }
   },
   palette: {
+    mode: 'dark',
     primary: {
       main: yellow[700],
       dark: yellow[800],
