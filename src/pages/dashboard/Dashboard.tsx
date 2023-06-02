@@ -9,7 +9,7 @@ export const Dashboard: React.FC = () => {
       barraDeFerramentas={
         <FerramentasDeDetalhe
           mostrarBotaoSalvarEFechar
-          mostrarBotaoSalvarEFecharCarregando
+          mostrarBotaoVoltar={false}
         />
       }
     >

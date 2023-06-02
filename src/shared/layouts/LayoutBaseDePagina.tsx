@@ -9,10 +9,10 @@ interface ILayoutBaseDePaginaProps {
 
 export const LayoutBaseDePagina: React.FC<ILayoutBaseDePaginaProps> = (props: ILayoutBaseDePaginaProps) => {
 
-  const theme = useTheme();
   //const smDowm = useMediaQuery(theme.breakpoints.down('sm'));
   const smDowm = useMediaQuery((theme: Theme) => theme.breakpoints.down('sm'));
   const lgDown = useMediaQuery((theme: Theme) => theme.breakpoints.down('lg'));
+  const theme = useTheme();
 
   const { toggleDrawerOpen } = useAppDrawerContext();
 
