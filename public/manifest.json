@@ -1,6 +1,6 @@
 {
-  "short_name": "Studio",
-  "name": "Atelier - Studio de Aplicativos",
+  "short_name": "Demonstracao",
+  "name": "Aplicativo de Demonstracao",
   "icons": [
     {
       "src": "favicon.ico",
