@@ -44,7 +44,7 @@ export const FerramentasDeDetalhe: React.FC<IFerramentasDeDetalheProps> = ({
   /* eslint-enable react/prop-types */
 
   const smDowm = useMediaQuery((theme: Theme) => theme.breakpoints.down('sm'));
-  const lgDown = useMediaQuery((theme: Theme) => theme.breakpoints.down('lg'));
+  const mdDown = useMediaQuery((theme: Theme) => theme.breakpoints.down('md'));
   const theme = useTheme();
   
   return (
@@ -76,7 +76,7 @@ export const FerramentasDeDetalhe: React.FC<IFerramentasDeDetalheProps> = ({
         <Skeleton width={110} height={60} />
       )}
 
-      {(mostrarBotaoSalvarEFechar && !mostrarBotaoSalvarEFecharCarregando && !smDowm && !lgDown) && (
+      {(mostrarBotaoSalvarEFechar && !mostrarBotaoSalvarEFecharCarregando && !smDowm && !mdDown) && (
         <Button
           color='primary'
           disableElevation

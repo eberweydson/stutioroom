@@ -1,17 +1,19 @@
 import { useEffect, useState, useMemo } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 
 import { FerramentasDaListagem } from '../../shared/components';
 import { LayoutBaseDePagina } from '../../shared/layouts';
 import { IListagemPessoa, PessoasService } from '../../shared/services/api/pessoas/PessoasService';
 import { useDebounce } from '../../shared/hooks';
-import { LinearProgress, Pagination, Paper, Table, TableBody, TableCell, TableContainer, TableFooter, TableHead, TableRow } from '@mui/material';
+import { Icon, IconButton, LinearProgress, Pagination, Paper, Table, TableBody, TableCell, TableContainer, TableFooter, TableHead, TableRow } from '@mui/material';
 import { Environment } from '../../shared/environment';
 
 export const ListagemDePessoas: React.FC = () => {
 
+  const navigate = useNavigate();
+
   const [ searchParams, setSearchParams ] = useSearchParams();
-  const { debounce } = useDebounce(3000, false);
+  const { debounce } = useDebounce(1000, false);
 
   const [ rows, setRows ] = useState<IListagemPessoa[]>([]);
   const [ totalCount, setTotalCount ] = useState(0);
@@ -43,12 +45,28 @@ export const ListagemDePessoas: React.FC = () => {
     });
   }, [busca, pagina]);
 
+  const handleDelete = (id: number) => {
+    if (confirm('Realmente deseja apagar ?')) {
+      PessoasService.deleteById(id).then(result => {
+        if (result instanceof Error) {
+          alert(result.message);
+        } else {
+          setRows(oldRows => [
+            ...oldRows.filter(oldRow => oldRow.id !== id)
+          ]);
+          alert('Registro apagado com sucesso');
+        }
+      });
+    }
+  };
+
   return (
     <LayoutBaseDePagina
       titulo="Listagem de pessoas"
       barraDeFerramentas={
         <FerramentasDaListagem
           textoBotaoNovo='Nova'
+          aoClicarEmNovo={() => navigate('/pessoas/detalhe/nova')}
           mostrarImputBusca
           //textoDaBusca={searchParams.get('busca') ?? ''}
           textoDaBusca={busca}
@@ -75,7 +93,12 @@ export const ListagemDePessoas: React.FC = () => {
                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
               >
                 <TableCell component="th" scope="row">
-                  {row.id}
+                  <IconButton size='small' onClick={() => handleDelete(row.id)}>
+                    <Icon>delete</Icon>
+                  </IconButton>
+                  <IconButton size='small' onClick={() => navigate(`/pessoas/detalhe/${row.id}`)}>
+                    <Icon>edit</Icon>
+                  </IconButton>
                 </TableCell>
                 <TableCell>{row.nomeCompleto}</TableCell>
                 <TableCell>{row.email}</TableCell>
